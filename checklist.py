@@ -8,7 +8,9 @@ def create(item):
 
 # READ
 def read(index):
-    print(checklist[index])
+    index = int(index)
+    item = checklist[index]
+    return item
 
 
 # UPDATE
@@ -23,8 +25,45 @@ def destroy(index):
 
 # LIST ALL ITEMS
 def list_all_items():
-    for item in list:
-        print(item)
+    index = 0
+    for checklist_item in checklist:
+        print("\033[1;31;40m{} {}\x1b[0m".format(index, checklist_item))
+        index += 1
+
+
+# MARKS ITEMS COMPLETE
+def mark_completed(index):
+    update(index, "{} {}".format("√", checklist[index]))
+
+
+# SELECT
+def select(function_code):
+    # Create item
+    if function_code == "C":
+        input_item = input("Input item: ")
+        create(input_item)
+
+    # Read item
+    elif function_code == "R":
+        item_index = input("Index Number? ")
+
+        # Remember that item_index must actually exist or our program crashes
+        print(read(item_index))
+
+    # Print all items
+    elif function_code == "P":
+        list_all_items()
+
+    # Catch all
+    else:
+        print("Unknown Option")
+
+
+# PROMPT THE USER
+def user_input(prompt):
+    # display a message in terminal and wait for input by user
+    user_input = input(prompt)
+    return user_input
 
 
 # TEST
@@ -39,7 +78,17 @@ def test():
     destroy(1)
 
     print(read(0))
-    print(read(1))
+    # print(read(1))
+    list_all_items()
+
+    select("C")
+    list_all_items()
+
+    select("R")
+    list_all_items()
+
+    user_value = user_input("Please Enter a value: ")
+    print(user_value)
 
 
 test()
