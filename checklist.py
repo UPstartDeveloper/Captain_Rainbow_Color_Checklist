@@ -54,9 +54,13 @@ def select(function_code):
     elif function_code == "P":
         list_all_items()
 
+    elif function_code == "Q":
+        return False
+
     # Catch all
     else:
         print("Unknown Option")
+    return True
 
 
 # PROMPT THE USER
@@ -91,4 +95,11 @@ def test():
     print(user_value)
 
 
+# Run tests
 test()
+
+running = True
+while running:
+    selection = user_input(
+        "Press C to add to list, R to Read from list, P to display list, and Q to quit ")
+    running = select(selection)
