@@ -28,7 +28,7 @@ def destroy(index):
 def list_all_items():
     index = 0
     for checklist_item in checklist:
-        print("\033[1;31;40m{} {}\x1b[0m".format(index, checklist_item))
+        print("\033[1;33;40m{} {}\x1b[0m".format(index, checklist_item))  # yellow text
         index += 1
 
 
@@ -44,6 +44,7 @@ def uncheck_item(index):
 
 # SELECT
 def select(function_code):
+    function_code = function.upper()  # makes string comparing case insensitive
     # Create item
     if function_code == "C":
         input_item = input("Input item: ")
@@ -54,7 +55,7 @@ def select(function_code):
         item_index = input("Index Number? ")
 
         # Remember that item_index must actually exist or our program crashes
-        print(read(item_index))
+        print("\033[1;33;40m{}\x1b[0m".format(read(item_index)))
 
     # Print all items
     elif function_code == "P":
