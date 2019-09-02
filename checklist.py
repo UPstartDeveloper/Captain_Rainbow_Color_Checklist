@@ -21,6 +21,13 @@ def destroy(index):
     checklist.pop(index)
 
 
+# LIST ALL ITEMS
+def list_all_items():
+    for item in list:
+        print(item)
+
+
+# TEST
 def test():
     create("purple sox")
     create("red cloak")
