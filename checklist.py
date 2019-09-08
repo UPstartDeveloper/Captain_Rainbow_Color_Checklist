@@ -44,7 +44,7 @@ def uncheck_item(index):
 
 # SELECT
 def select(function_code):
-    function_code = function.upper()  # makes string comparing case insensitive
+    function_code = function_code.upper()  # makes string comparing case insensitive
     # Create item
     if function_code == "C":
         input_item = input("Input item: ")
